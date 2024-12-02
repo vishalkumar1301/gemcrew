@@ -26,7 +26,10 @@ def run():
             These Liberals can't fix what they broke.
         '''
     }
-    Gemcrew().crew().kickoff(inputs=inputs)
+    crew_output = Gemcrew().crew().kickoff(inputs=inputs)
+
+    if crew_output.json_dict:
+        print(f"JSON Output: {crew_output.json_dict}")
 
 
 def train():

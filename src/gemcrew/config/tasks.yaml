@@ -1,57 +1,20 @@
 analyze_text_task:
   description: >
-    Analyze the following tweet text and list the main points being communicated, presenting them clearly and concisely, keeping any metrics or numbers if present.
+    Analyze the following tweet text and list the main points being communicated, presenting them clearly and concisely, specially if there are any metrics or numbers.
     The tweet text is: {topic}.
-  expected_output: |
-    1. Main point one.
-    2. Main point two.
-    3. Main point three.
+  expected_output: A list of main points being communicated.
   agent: text_analyzer
 
 
-verify_credibility_task:
+verify_important_task:
   description: >
-    From the main points you've listed, identify which pieces of information should be verified for credibility, especially if they are numbers or metrics. Present these points in a structured JSON format, including the point in the description field and specific verification questions that should be asked to verify the credibility of the point. The output should only contain the JSON data, nothing else.
-  expected_output: |
-    {{
-      "topics": {{
-        "Topic_name_One": {{
-          "description": "Brief description of the factual claim.",
-          "verification_points": [
-            "Specific question or detail to verify."
-          ]
-        }},
-        "Topic_name_Two": {{
-          "description": "Brief description of the factual claim.",
-          "verification_points": [
-            "Specific question or detail to verify."
-          ]
-        }}
-      }}
-    }}
+    From the main points you've listed, keep only the points that public would want to know more about or generaly would not be aware of.
+  expected_output: A list of points that public would want to know more about.
   agent: credibility_verifier
-  output_format: JSON
 
 
 select_objective_task:
   description: >
-    Out of the input JSON data, remove the objects which are just opinions or subjective statements and keep only the objective ones, especially if they are numbers or metrics, that should be verified for credibility. The output should only contain the JSON data, nothing else.
-  expected_output: |
-    {{
-      "topics": {{
-        "Topic_name_One": {{
-          "description": "An objective fact that requires verification.",
-          "verification_points": [
-            "Specific question or detail to verify."
-          ]
-        }},
-        "Topic_name_Two": {{
-          "description": "Another objective fact suitable for verification.",
-          "verification_points": [
-            "Specific question or detail to verify."
-          ]
-        }}
-      }}
-    }}
+    Out of the input data keep only the points that are objective and should be verified for credibility. Remove any points that are subjective or opinion based.
+  expected_output: A list of points that should be verified for credibility.
   agent: objective_selector
-  output_format: JSON

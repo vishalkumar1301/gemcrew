@@ -1,0 +1,40 @@
+{
+  "points": [
+    {
+      "topic": "Missing Immigration Data",
+      "exact_claim": "One million individuals who entered Canada are unaccounted for under former Immigration Minister Sean Fraser's tenure.",
+      "description": "One million individuals who entered Canada are unaccounted for.",
+      "context": "Former Immigration Minister Sean Fraser's tenure.",
+      "verification_points": [
+        "How many individuals entered Canada during Sean Fraser's tenure?",
+        "How many of those individuals are unaccounted for?",
+        "What methods are used to track immigrants to Canada?",
+        "What is the margin of error in tracking immigrants?"
+      ]
+    },
+    {
+      "topic": "Alleged Disregard for Warnings",
+      "exact_claim": "Warnings that increased immigration levels would raise housing costs were allegedly ignored.",
+      "description": "Warnings about increased immigration levels potentially causing higher housing costs were ignored.",
+      "context": "Concerns about rising housing costs due to increased immigration levels.",
+      "verification_points": [
+        "Were warnings about rising housing costs issued prior to the increase in immigration levels?",
+        "What was the specific content of these warnings?",
+        "What actions were taken by the government to address the warnings?",
+        "What is the evidence supporting the claim that these warnings were ignored?"
+      ]
+    },
+    {
+      "topic": "Citizenship Granted to Alleged ISIS Terrorist",
+      "exact_claim": "The Liberal government granted citizenship to an individual alleged to be an ISIS terrorist.",
+      "description": "The Liberal government granted citizenship to an individual alleged to be associated with ISIS.",
+      "context": "Allegations of citizenship granted to an alleged ISIS terrorist.",
+      "verification_points": [
+        "Was citizenship granted to an individual with alleged ties to ISIS?",
+        "What is the evidence supporting the claim of ISIS affiliation?",
+        "What was the citizenship process followed in this case?",
+        "Were there any security checks conducted?"
+      ]
+    }
+  ]
+}

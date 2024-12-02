@@ -1,6 +1,19 @@
 from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 
+from pydantic import BaseModel, Field
+
+
+class Point(BaseModel):
+	topic: str = Field(..., description="Name of the topic.")
+	exact_claim: str = Field(..., description="Exact claim being made.")
+	description: str = Field(..., description="Brief description of the factual claim.")
+	context: str = Field(..., description="General context of the statement, so that the verifier can understand the background of the claim.")
+	verification_points: list[str] = Field(..., description="Specific question or detail to verify.")
+
+class Points(BaseModel):
+	points: list[Point] = Field(..., description="List of points that should be verified for credibility.")
+
 @CrewBase
 class Gemcrew():
 	"""Gemcrew crew"""
@@ -30,13 +43,15 @@ class Gemcrew():
 	def analyze_text_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['analyze_text_task'],
+			output_json=Points,
 		)
 
 	@task
 	def verify_credibility_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['verify_credibility_task'],
+			config=self.tasks_config['verify_important_task'],
 			context=[self.analyze_text_task()],
+			output_json=Points,
 		)
 
 	@task
@@ -44,6 +59,8 @@ class Gemcrew():
 		return Task(
 			config=self.tasks_config['select_objective_task'],
 			context=[self.verify_credibility_task()],
+			output_json=Points,
+			output_file='output.json',
 		)
 
 	@crew
